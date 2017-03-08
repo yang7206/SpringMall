@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - mall@localhost" uuid="cd43f94b-5d06-4215-8fb3-a0ef36319996">
+    <database-info product="MySQL" version="5.6.23" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+      <schema id="1" name="mall">
+        <visible>1</visible>
+      </schema>
+      <table id="2" parent="1" name="product_category"/>
+      <table id="3" parent="1" name="product_collect"/>
+      <table id="4" parent="1" name="user"/>
+      <column id="5" parent="2" name="category_id">
+        <mandatory>1</mandatory>
+        <data-type>INT(10)|4</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="6" parent="2" name="category_name">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR(128)|12</data-type>
+      </column>
+      <column id="7" parent="2" name="category_description">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR(1024)|12</data-type>
+      </column>
+      <column id="8" parent="2" name="category_tag">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR(128)|12</data-type>
+      </column>
+      <column id="9" parent="2" name="collect_id">
+        <mandatory>1</mandatory>
+        <data-type>INT(10)|4</data-type>
+      </column>
+      <index id="10" parent="2" name="category_index">
+        <columns>category_name</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="11" parent="2" name="PRIMARY">
+        <columns>category_id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="12" parent="2" name="category_fk_collect_id">
+        <columns>collect_id</columns>
+        <ref-key>~.product_collect.PRIMARY</ref-key>
+        <cascade-update-rule>no_action</cascade-update-rule>
+        <cascade-delete-rule>no_action</cascade-delete-rule>
+      </foreign-key>
+      <column id="13" parent="3" name="collect_id">
+        <mandatory>1</mandatory>
+        <data-type>INT(10)|4</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="14" parent="3" name="collect_name">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR(128)|12</data-type>
+      </column>
+      <column id="15" parent="3" name="collect_description">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR(1024)|12</data-type>
+      </column>
+      <column id="16" parent="3" name="collect_tag">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR(128)|12</data-type>
+      </column>
+      <index id="17" parent="3" name="collect_index">
+        <columns>collect_name</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="18" parent="3" name="PRIMARY">
+        <columns>collect_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="19" parent="4" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>INT(10)|4</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="20" parent="4" name="account">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR(32)|12</data-type>
+      </column>
+      <column id="21" parent="4" name="pwd">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR(128)|12</data-type>
+      </column>
+      <column id="22" parent="4" name="nickname">
+        <mandatory>1</mandatory>
+        <data-type>VARCHAR(32)|12</data-type>
+      </column>
+      <column id="23" parent="4" name="age">
+        <mandatory>1</mandatory>
+        <data-type>INT(10)|4</data-type>
+      </column>
+      <index id="24" parent="4" name="account">
+        <columns>account</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="25" parent="4" name="PRIMARY">
+        <columns>user_id</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
+</component>

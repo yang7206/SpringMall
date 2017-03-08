@@ -1,0 +1,121 @@
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.bottom {
+    margin-top: 100px;
+    color: gray;
+    position: relative;
+}
+
+.vcenter {
+    vertical-align: middle;
+
+}
+
+.nopadding {
+}
+
+.error {
+    padding: 7px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    font-size: 14px;
+}
+
+.fail-tips {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.marglr20 {
+    display: inline-block;
+    width: 100%;
+    padding-left: 20px;
+}
+
+.loginbtn {
+    width: 100%;
+    padding: 7px;
+    color: #fff;
+    background-color: red;
+    border-color: red
+}
+
+.loginbtn:hover,.loginbtn:active,.loginbtn:focus,.loginbtn.active {
+    color: #fff;
+    background-color: #a94442;
+    border-color: #a94442
+}
+
+.content {
+    color: gray;
+}
+
+.header {
+    text-align: center;
+    color: black;
+    margin-bottom: 30px;
+}
+
+.regist-p {
+    margin-left: 40px;
+}
+
+.regist-a {
+    float: right;
+    margin-top: 20px;
+    margin-left: 30px;
+}
+
+.regist-a a {
+    margin-left: 10px;
+
+}
+
+.logo {
+    margin-top: -20px;
+    margin-left: 20px;
+}
+
+.parent {
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 100%;
+    background-size: cover;
+    background-image: url("https://img.alicdn.com/tps/TB1I.pAPVXXXXaFXXXXXXXXXXXX-2500-600.jpg");
+    height: 600px;
+    margin: 10px 0px 0px 0px;
+    width: 100%;
+}
+
+.parent-c {
+    padding-top: 100px;
+    padding-right: 80px;
+    padding-bottom: 0px;
+}
+
+.child {
+    float: right;
+    background: #eed;
+    background-clip: border-box;
+    border-radius: 3px;
+    width: 350px;
+    height: auto;
+    padding: 20px 30px 20px 0px;
+}
+
+.btn-primary {
+    border-color: red;
+    background-color: red;
+}
+
+body button .btn-primary:hover {
+    background-color: #1bd172;
+}

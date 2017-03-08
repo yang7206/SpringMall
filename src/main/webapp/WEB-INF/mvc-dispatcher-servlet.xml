@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+
+    <!-- 指明controller 所在的包， 自动进行扫描-->
+    <context:component-scan base-package="com.mall.*"/>
+
+
+    <!--注解 驱动-->
+    <mvc:annotation-driven/>
+
+    <!-- 静态资源访问  JS 图片-->
+    <mvc:default-servlet-handler/>
+
+    <!--配置静态资源路径  如/img/  将到资源文件夹resources/static/img/文件夹下寻找-->
+    <mvc:resources mapping="/img/**" location="classpath:static/img/"/>
+    <mvc:resources mapping="/css/**" location="classpath:static/css/"/>
+    <mvc:resources mapping="/images/**" location="classpath:static/images/"/>
+    <mvc:resources mapping="/js/**" location="classpath:static/js/"/>
+    <mvc:resources mapping="/fonts/**" location="classpath:static/fonts/"/>
+    <mvc:resources mapping="/pages/**" location="classpath:static/pages/"/>
+
+
+    <!--加载资源文件配置-->
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename">
+            <value>messages</value>
+        </property>
+    </bean>
+
+    <!-- 自动映射配置  /index.xxx 将指向 /index视图 -->
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+        <property name="order" value="1"/>
+    </bean>
+
+    <!--配置 简单url 映射 ，必须设置order 不然会提示404  indexController指向下面的indexController中的value视图-->
+    <!--<bean id="simpleUrlHandlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">-->
+        <!--<property name="order" value="1"/>-->
+        <!--<property name="mappings">-->
+            <!--&lt;!&ndash;<props>&ndash;&gt;-->
+                <!--&lt;!&ndash;<prop key="index.do">indexController</prop>&ndash;&gt;-->
+                <!--&lt;!&ndash;<prop key="index.html">indexController</prop>&ndash;&gt;-->
+                <!--&lt;!&ndash;<prop key="index">indexController</prop>&ndash;&gt;-->
+            <!--&lt;!&ndash;</props>&ndash;&gt;-->
+            <!--<value>index.html=indexController</value>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!--<bean id="indexController" class="org.springframework.web.servlet.mvc.ParameterizableViewController">-->
+        <!--<property name="viewName" value="index"/>-->
+    <!--</bean>-->
+
+
+
+    <!-- 资源 显示 配置 ，下面的配置 将对 某些网址的.json  .xml文件 进行对应格式显示 最好配合 500等错误页面，不然某些页面.xml会 显示服务器错误-->
+    <!--<bean id="configureContentNegotiation" class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">-->
+        <!--<property name="order" value="1"/>-->
+        <!--<property name="contentNegotiationManager" >-->
+            <!--<bean class="org.springframework.web.accept.ContentNegotiationManager">-->
+                <!--<constructor-arg>-->
+                    <!--<bean class="org.springframework.web.accept.PathExtensionContentNegotiationStrategy">-->
+                        <!--<constructor-arg>-->
+                            <!--<map>-->
+                                <!--<entry key="json" value="application/json;charset=utf-8"/>-->
+                                <!--<entry key="xml" value="application/xml;charset=utf-8"/>-->
+                            <!--</map>-->
+                        <!--</constructor-arg>-->
+                    <!--</bean>-->
+
+                <!--</constructor-arg>-->
+            <!--</bean>-->
+        <!--</property>-->
+        <!--<property name="defaultViews">-->
+            <!--<list>-->
+                <!--<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>-->
+                <!--<bean class="org.springframework.web.servlet.view.xml.MarshallingView">-->
+                    <!--<constructor-arg>-->
+                        <!--<bean class="org.springframework.oxm.jaxb.Jaxb2Marshaller">-->
+                            <!--<property name="classesToBeBound">-->
+                                <!--<array>-->
+                                    <!--<value>com.mall.test.Pizza</value>-->
+                                <!--</array>-->
+                            <!--</property>-->
+                        <!--</bean>-->
+                    <!--</constructor-arg>-->
+                <!--</bean>-->
+            <!--</list>-->
+        <!--</property>-->
+
+    <!--</bean>-->
+
+
+    <!--视图显示 配置  对应地址将查找 /WEB-INF/pages/xxxx.jsp文件进行显示-->
+    <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+</beans>
