@@ -3,6 +3,7 @@ package com.mall.service.impl;
 import com.mall.dao.AccountMapper;
 import com.mall.model.Account;
 import com.mall.service.IAccountService;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,12 +36,14 @@ public class AccountServiceImpl implements IAccountService {
         return accountMapper.queryForList();
     }
 
-    public Account findAccountByAccountPwd(String account,String password){
+    public Account findAccountByAccountPwd(String account, String password) {
         return accountMapper.findAccountByAccountPwd(account, password);
     }
 
+    @Cacheable(value = "myCache", key = "#account")
     @Override
     public Account findAccountByAccount(String account) {
+        System.err.println("findAccountByAccount :" + account);
         return accountMapper.findAccountByAccount(account);
     }
 

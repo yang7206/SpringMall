@@ -223,14 +223,4 @@ public class Account extends BaseModel {
     public void setAccountState(String accountState) {
         this.accountState = accountState;
     }
-
-    private String _csrf;
-
-    public String get_csrf() {
-        return _csrf;
-    }
-
-    public void set_csrf(String _csrf) {
-        this._csrf = _csrf;
-    }
 }

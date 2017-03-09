@@ -164,7 +164,7 @@ public abstract class CustomAbstractUserDetailsAuthenticationProvider implements
         public void check(UserDetails user) {
             if (!user.isCredentialsNonExpired()) {
                 CustomAbstractUserDetailsAuthenticationProvider.this.logger.debug("User account credentials have expired");
-                throw new CredentialsExpiredException(CustomAbstractUserDetailsAuthenticationProvider.this.messages.getMessage("CustomAbstractUserDetailsAuthenticationProvider.credentialsExpired", "User credentials have expired"));
+                throw new CredentialsExpiredException(CustomAbstractUserDetailsAuthenticationProvider.this.messages.getMessage("AbstractUserDetailsAuthenticationProvider.credentialsExpired", "User credentials have expired"));
             }
         }
     }
@@ -176,13 +176,13 @@ public abstract class CustomAbstractUserDetailsAuthenticationProvider implements
         public void check(UserDetails user) {
             if (!user.isAccountNonLocked()) {
                 CustomAbstractUserDetailsAuthenticationProvider.this.logger.debug("User account is locked");
-                throw new LockedException(CustomAbstractUserDetailsAuthenticationProvider.this.messages.getMessage("CustomAbstractUserDetailsAuthenticationProvider.locked", "User account is locked"));
+                throw new LockedException(CustomAbstractUserDetailsAuthenticationProvider.this.messages.getMessage("AbstractUserDetailsAuthenticationProvider.locked", "User account is locked"));
             } else if (!user.isEnabled()) {
                 CustomAbstractUserDetailsAuthenticationProvider.this.logger.debug("User account is disabled");
-                throw new DisabledException(CustomAbstractUserDetailsAuthenticationProvider.this.messages.getMessage("CustomAbstractUserDetailsAuthenticationProvider.disabled", "User is disabled"));
+                throw new DisabledException(CustomAbstractUserDetailsAuthenticationProvider.this.messages.getMessage("AbstractUserDetailsAuthenticationProvider.disabled", "User is disabled"));
             } else if (!user.isAccountNonExpired()) {
                 CustomAbstractUserDetailsAuthenticationProvider.this.logger.debug("User account is expired");
-                throw new AccountExpiredException(CustomAbstractUserDetailsAuthenticationProvider.this.messages.getMessage("CustomAbstractUserDetailsAuthenticationProvider.expired", "User account has expired"));
+                throw new AccountExpiredException(CustomAbstractUserDetailsAuthenticationProvider.this.messages.getMessage("AbstractUserDetailsAuthenticationProvider.expired", "User account has expired"));
             }
         }
     }

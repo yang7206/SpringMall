@@ -7,6 +7,8 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
+
+
 -- -----------------------------------------------------
 -- Schema mydb
 -- -----------------------------------------------------
@@ -19,6 +21,20 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `mall` DEFAULT CHARACTER SET utf8 ;
 USE `mall` ;
+
+
+-- -----------------------------------------------------
+-- table PERSISTENT_LOGINS  remember-me
+-- -----------------------------------------------------
+create table PERSISTENT_LOGINS
+(
+  username  VARCHAR(64) not null,
+  series   VARCHAR(64) not null,
+  token     VARCHAR(64) not null,
+  last_used DATE not null
+);
+alter table PERSISTENT_LOGINS
+  add constraint PK_PERSISTENT_LOGIN primary key (series
 
 -- -----------------------------------------------------
 -- Table `mall`.`account_state`
