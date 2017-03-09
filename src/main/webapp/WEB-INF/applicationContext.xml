@@ -5,13 +5,5 @@
     <bean id="baseMessageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basename" value="classpath:security_messages"/>
     </bean>
-    <!-- 开启spring缓存 -->
-    <cache:annotation-driven cache-manager="cacheManager" />
-    <bean id="cacheManagerFactory" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
-        <property name="configLocation" value="classpath:META-INF/ehcache.xml"/>
-    </bean>
-    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
-        <property name="cacheManager" ref="cacheManagerFactory"/>
-    </bean>
 
 </beans>
